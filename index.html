@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Historia ❤</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="screen-lock" class="screen active">
+        <div class="matrix-bg" id="matrix"></div>
+        <div class="card lock-card">
+            <div class="lock-icon">🔒</div>
+            <h2>Esto se desbloquea con tu nombre ❤</h2>
+            <div class="input-group">
+                <input type="text" id="partner-name" placeholder="Escribe tu nombre aquí..." autocomplete="off">
+                <p id="lock-error" class="error-msg">Ese no es el amor de mi vida... Inténtalo de nuevo u.u</p>
+            </div>
+            <button onclick="checkName()" class="btn">Entrar</button>
+            <p class="footer-note">Este espacio es solo para ti.</p>
+        </div>
+    </div>
+
+    <div id="screen-roulette" class="screen">
+        <div class="card dynamic-card">
+            <h2>Feliz primer mes 👩‍❤️‍👨 y haremos...</h2>
+            
+            <div class="roulette-container">
+                <div class="roulette-window">
+                    <div class="roulette-slot" id="slot-machine">
+                        <div class="slot-item">🎨 Pintura</div>
+                        <div class="slot-item">🍿 Cine</div>
+                        <div class="slot-item">🍔 Cena</div>
+                        <div class="slot-item">✈ Viajar</div>
+                        <div class="slot-item">🏖️ playa</div>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="spinRoulette()" id="btn-spin" class="btn">Girar</button>
+        </div>
+    </div>
+
+    <div id="screen-time" class="screen">
+        <div class="card dynamic-card">
+            <h2>¿A qué hora puedes estar lista? 🕒</h2>
+            <div class="radio-group">
+                <label class="radio-label">
+                    <input type="radio" name="time-option" value="5:00 PM">
+                    <span class="custom-radio"></span> 5:00 PM
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="time-option" value="6:00 PM">
+                    <span class="custom-radio"></span> 6:00 PM
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="time-option" value="7:00 PM" checked>
+                    <span class="custom-radio"></span> 7:00 PM
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="time-option" value="8:00 PM">
+                    <span class="custom-radio"></span> 8:00 PM
+                </label>
+            </div>
+            <button onclick="confirmTime()" class="btn">Confirmar hora</button>
+        </div>
+    </div>
+
+    <div id="screen-final" class="screen">
+        <div class="card final-card">
+            <h2 class="romantic-text">Ya eres hermosa, pero estate lista a las <span id="chosen-time">7:00 PM</span>!</h2>
+            <p class="location-text">📍 <strong>Dirección:</strong> Tu casa (pasaré por ti 😉)</p>
+            
+            <div class="heart-animation">
+                <div class="heart"></div>
+            </div>
+            
+            <p class="final-quote">"Eventualmente todo lo que es para ti termina encontrándote."</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
