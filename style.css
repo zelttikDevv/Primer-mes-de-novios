@@ -21,7 +21,7 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0; /* Por detrás de las tarjetas */
+    z-index: 0;
     pointer-events: none;
     overflow: hidden;
 }
@@ -30,7 +30,7 @@ body, html {
     position: absolute;
     top: -50px;
     font-size: 24px;
-    color: #40041d; /* Rojo/Rosa oscuro para que no sature la vista */
+    color: #40041d;
     opacity: 0.4;
     animation: fall linear infinite;
 }
@@ -40,12 +40,8 @@ body, html {
         transform: translateY(0) rotate(0deg);
         opacity: 0;
     }
-    10% {
-        opacity: 0.5;
-    }
-    90% {
-        opacity: 0.5;
-    }
+    10% { opacity: 0.5; }
+    90% { opacity: 0.5; }
     100% {
         transform: translateY(105vh) rotate(360deg);
         opacity: 0;
@@ -63,7 +59,7 @@ body, html {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    z-index: 10; /* Por encima del fondo */
+    z-index: 10;
 }
 
 .screen.active {
@@ -104,13 +100,8 @@ body, html {
     box-shadow: 0 4px 15px rgba(149, 7, 64, 0.4);
 }
 
-.btn:hover {
-    background-color: #c3073f;
-}
-
-.btn:active {
-    transform: scale(0.98);
-}
+.btn:hover { background-color: #c3073f; }
+.btn:active { transform: scale(0.98); }
 
 /* Login */
 .lock-icon {
@@ -118,10 +109,6 @@ body, html {
     margin-bottom: 15px;
     display: inline-block;
     animation: pulse 2s infinite;
-}
-
-.input-group {
-    margin-bottom: 20px;
 }
 
 #partner-name {
@@ -134,30 +121,17 @@ body, html {
     font-size: 18px;
     text-align: center;
     outline: none;
-    letter-spacing: 3px; /* Espaciado estético para los puntitos de la contraseña */
+    letter-spacing: 3px;
 }
 
-#partner-name:focus {
-    border-color: #c3073f;
-}
-
-.error-msg {
-    color: #c3073f;
-    font-size: 13px;
-    margin-top: 8px;
-    display: none;
-}
-
-.footer-note {
-    font-size: 11px;
-    color: #4e4e50;
-    margin-top: 20px;
-}
+#partner-name:focus { border-color: #c3073f; }
+.error-msg { color: #c3073f; font-size: 13px; margin-top: 8px; display: none; }
+.footer-note { font-size: 11px; color: #4e4e50; margin-top: 20px; }
 
 /* Ruleta */
 .roulette-container {
     margin: 30px auto;
-    width: 220px;
+    width: 240px;
     height: 70px;
     border: 3px solid #c3073f;
     border-radius: 12px;
@@ -167,141 +141,54 @@ body, html {
     box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
 }
 
-.roulette-window {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.roulette-slot {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-}
-
+.roulette-window { width: 100%; height: 100%; position: relative; }
+.roulette-slot { position: absolute; width: 100%; top: 0; left: 0; }
 .slot-item {
     width: 100%;
     height: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 19px;
+    font-size: 16px;
     font-weight: bold;
     color: #ffffff;
+    padding: 0 10px;
+    text-align: center;
 }
 
 /* Radios */
-.radio-group {
-    text-align: left;
-    max-width: 200px;
-    margin: 0 auto 30px auto;
-}
+.radio-group { text-align: left; max-width: 200px; margin: 0 auto 30px auto; }
+.radio-label { display: block; position: relative; padding-left: 35px; margin-bottom: 15px; cursor: pointer; font-size: 18px; color: #ffffff; }
+.radio-label input { position: absolute; opacity: 0; }
+.custom-radio { position: absolute; top: 2px; left: 0; height: 20px; width: 20px; background-color: #1a1a1d; border: 2px solid #4e4e50; border-radius: 50%; }
+.radio-label input:checked ~ .custom-radio { background-color: #c3073f; border-color: #c3073f; }
+.custom-radio:after { content: ""; position: absolute; display: none; }
+.radio-label input:checked ~ .custom-radio:after { display: block; }
+.radio-label .custom-radio:after { top: 4px; left: 4px; width: 8px; height: 8px; border-radius: 50%; background: white; }
 
-.radio-label {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 15px;
-    cursor: pointer;
-    font-size: 18px;
-    color: #ffffff;
+/* GIF Final */
+.gif-container {
+    width: 100%;
+    max-width: 220px;
+    margin: 20px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    border: 2px solid #950740;
 }
+.final-gif { width: 100%; height: auto; display: block; object-fit: cover; }
 
-.radio-label input {
-    position: absolute;
-    opacity: 0;
-}
-
-.custom-radio {
-    position: absolute;
-    top: 2px;
-    left: 0;
-    height: 20px;
-    width: 20px;
-    background-color: #1a1a1d;
-    border: 2px solid #4e4e50;
-    border-radius: 50%;
-}
-
-.radio-label input:checked ~ .custom-radio {
-    background-color: #c3073f;
-    border-color: #c3073f;
-}
-
-.custom-radio:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-.radio-label input:checked ~ .custom-radio:after {
-    display: block;
-}
-
-.radio-label .custom-radio:after {
-    top: 4px;
-    left: 4px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: white;
-}
-
-/* Pantalla Final */
-.romantic-text {
-    color: #ffffff !important;
-    line-height: 1.4;
-}
-
-#chosen-time {
-    color: #c3073f;
-    font-weight: bold;
-}
-
-.location-text {
-    font-size: 15px;
-    color: #e0a96d;
-    margin-bottom: 30px;
-}
-
-.final-quote {
-    font-style: italic;
-    font-size: 13px;
-    color: #4e4e50;
-    margin-top: 30px;
-}
-
-.heart-animation {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-.heart {
-    background-color: #c3073f;
-    display: inline-block;
-    height: 30px;
-    margin: 0 10px;
-    position: relative;
-    transform: rotate(-45deg);
-    width: 30px;
-    animation: heartbeat 1.2s infinite;
-}
-
-.heart:before, .heart:after {
-    content: "";
-    background-color: #c3073f;
-    border-radius: 50%;
-    height: 30px;
-    position: absolute;
-    width: 30px;
-}
-
-.heart:before { top: -15px; left: 0; }
-.heart:after { left: 15px; top: 0; }
+/* Corazón y Texto */
+.romantic-text { color: #ffffff !important; line-height: 1.4; font-size: 19px !important; }
+.romantic-text strong { color: #e0a96d; }
+#chosen-time { color: #c3073f; font-weight: bold; }
+.location-text { font-size: 15px; color: #a1a1a1; margin-top: 5px; margin-bottom: 20px; }
+.final-quote { font-style: italic; font-size: 13px; color: #4e4e50; margin-top: 25px; }
+.heart-animation { height: 60px; display: flex; align-items: center; justify-content: center; margin: 10px 0; }
+.heart { background-color: #c3073f; display: inline-block; height: 20px; margin: 0 10px; position: relative; transform: rotate(-45deg); width: 20px; animation: heartbeat 1.2s infinite; }
+.heart:before, .heart:after { content: ""; background-color: #c3073f; border-radius: 50%; height: 20px; position: absolute; width: 20px; }
+.heart:before { top: -10px; left: 0; }
+.heart:after { left: 10px; top: 0; }
 
 @keyframes heartbeat {
     0% { transform: scale(1) rotate(-45deg); }
@@ -310,7 +197,6 @@ body, html {
     60% { transform: scale(1.3) rotate(-45deg); }
     100% { transform: scale(1) rotate(-45deg); }
 }
-
 @keyframes pulse {
     0% { transform: scale(1); opacity: 0.8; }
     50% { transform: scale(1.1); opacity: 1; }
