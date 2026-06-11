@@ -2,21 +2,24 @@
 // CONFIGURACIÓN INICIAL
 // ==========================================================================
 const NOMBRE_VALIDO = "cristal"; 
+let planSeleccionadoGlobal = ""; // Variable para recordar qué plan salió
 
-// NUEVA LISTA AMPLIADA (Sin pickleball)
+// TU LISTA DE MIÉRCOLES DE NOVIOS TOTALMENTE PERSONALIZADA
 const opcionesRuleta = [
-    "🎳 Ir a los Bolos", 
+    "🏖️ Ir a la playa", 
     "🍿 Cine", 
-    "🍔 Cena Romántica", 
-    "🍦 Por un Helado", 
-    "☕ Ir a un Café", 
-    "🧺 Hacer un Picnic",
-    "🌳 Pasear juntos",
-    "🖼 Visitar un Museo"
+    "🍷 Cena Romántica", 
+    "🍦 Ir por un Helado", 
+    "☕ Ir a una Cafetería", 
+    "🧺 Picnic en la playa", 
+    "🌳 Pasear juntos", 
+    "🎬 Noche de películas", 
+    "🐱 Ir al parque con Kira (si se deja pechera)", 
+    "🎮 Nochecita de videojuegos", 
+    "🎱 Ir a jugar billar", 
+    "🎤 Ir al karaoke", 
+    "💋 Unos besitos bien sabrosos"
 ];
-
-// Buscamos dinámicamente en qué posición quedó "🍿 Cine" para no errar el tiro
-const indiceDestino = opcionesRuleta.findIndex(item => item.includes("Cine")); 
 
 // ==========================================================================
 // CONTROL DE PANTALLAS
@@ -43,23 +46,19 @@ function checkName() {
     }
 }
 
-// Escuchar la tecla Enter
 document.getElementById('partner-name').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        checkName();
-    }
+    if (e.key === 'Enter') { checkName(); }
 });
 
-
 // ==========================================================================
-// LOGICA DE LA RULETA (MÁQUINA TRAGAMONEDAS)
+// LÓGICA DE LA RULETA (100% ALEATORIA)
 // ==========================================================================
 const slotMachine = document.getElementById('slot-machine');
 
 function initRoulette() {
     let htmlContent = "";
-    // Duplicamos el set de datos para crear el scroll infinito visual
-    for (let loop = 0; loop < 20; loop++) {
+    // Creamos bucles repetidos de la lista para simular el scroll continuo al girar
+    for (let loop = 0; loop < 15; loop++) {
         opcionesRuleta.forEach(opcion => {
             htmlContent += `<div class="slot-item">${opcion}</div>`;
         });
@@ -70,17 +69,21 @@ function initRoulette() {
 function spinRoulette() {
     const btnSpin = document.getElementById('btn-spin');
     btnSpin.disabled = true;
-    btnSpin.innerText = "Girando...";
+    btnSpin.innerText = "Decidiendo...";
 
     const heightPerItem = 64; 
     const totalItemsInLoop = opcionesRuleta.length;
     
-    const vueltasCompletas = 5; // Más vueltas para que se luzca la nueva lista larga
-    const itemFinalAbsoluto = (vueltasCompletas * totalItemsInLoop) + indiceDestino;
+    // ELECCIÓN AL AZAR: Escoge un número totalmente random del catálogo
+    const indiceDestinoRandom = Math.floor(Math.random() * totalItemsInLoop);
+    planSeleccionadoGlobal = opcionesRuleta[indiceDestinoRandom];
+    
+    const vueltasCompletas = 4; 
+    const itemFinalAbsoluto = (vueltasCompletas * totalItemsInLoop) + indiceDestinoRandom;
     const destinoPixeles = -(itemFinalAbsoluto * heightPerItem);
 
     let currentPos = 0;
-    const totalDuration = 4000; // 4 segundos girando
+    const totalDuration = 4000; // 4 segundos de rotación
     const startTime = performance.now();
 
     function animateSpin(timestamp) {
@@ -88,7 +91,7 @@ function spinRoulette() {
         
         if (elapsed < totalDuration) {
             let progress = elapsed / totalDuration;
-            let easeOutQuad = 1 - Math.pow(1 - progress, 3);
+            let easeOutQuad = 1 - Math.pow(1 - progress, 3); // Freno progresivo suave
             currentPos = easeOutQuad * destinoPixeles;
             
             slotMachine.style.top = `${currentPos}px`;
@@ -96,24 +99,27 @@ function spinRoulette() {
         } else {
             slotMachine.style.top = `${destinoPixeles}px`;
             
-            // Avanzar a la siguiente pantalla tras una pequeña pausa de victoria
-            setTimeout(() => {
-                switchScreen('screen-roulette', 'screen-time');
+            // Pasamos a la siguiente pantalla tras segundo y medio de suspenso
+            setTimeout(() => { 
+                switchScreen('screen-roulette', 'screen-time'); 
             }, 1500);
         }
     }
-
     requestAnimationFrame(animateSpin);
 }
 
 // ==========================================================================
-// CONTROL DE HORARIOS
+// CONTROL DE HORARIOS Y PANTALLA GANADORA
 // ==========================================================================
 function confirmTime() {
     const selectedRadio = document.querySelector('input[name="time-option"]:checked');
     if (selectedRadio) {
         const horaElegida = selectedRadio.value;
-        document.getElementById('chosen-time').innerText = horaElegida;
+        
+        // Inyectamos el plan ganador y la hora de manera dinámica en la pantalla final
+        const textFinal = document.querySelector('.romantic-text');
+        textFinal.innerHTML = `¡Hoy toca: <strong>${planSeleccionadoGlobal}</strong>!<br>Ya eres hermosa, pero estate lista a las <span id="chosen-time">${horaElegida}</span>`;
+        
         switchScreen('screen-time', 'screen-final');
     }
 }
