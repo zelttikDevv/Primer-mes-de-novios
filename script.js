@@ -14,7 +14,7 @@ const opcionesRuleta = [
     "🧺 Picnic en la playa", 
     "🌳 Pasear juntos", 
     "🎬 Noche de películas", 
-    "🐱 Ir al parque con Kira (si se deja pechera)", 
+    "🐱 Ir al parque con Kira (si se deja la pechera)", 
     "🎮 Nochecita de videojuegos", 
     "🎱 Ir a jugar billar", 
     "🎤 Ir al karaoke", 
