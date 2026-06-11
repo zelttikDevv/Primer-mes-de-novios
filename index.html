@@ -8,13 +8,22 @@
 </head>
 <body>
 
+    <div class="hearts-background">
+        <div class="heart-drop" style="left: 10%; animation-delay: 0s; animation-duration: 6s;">❤</div>
+        <div class="heart-drop" style="left: 25%; animation-delay: 2s; animation-duration: 8s;">❤</div>
+        <div class="heart-drop" style="left: 40%; animation-delay: 1s; animation-duration: 5s;">❤</div>
+        <div class="heart-drop" style="left: 55%; animation-delay: 3s; animation-duration: 7s;">❤</div>
+        <div class="heart-drop" style="left: 70%; animation-delay: 0.5s; animation-duration: 6s;">❤</div>
+        <div class="heart-drop" style="left: 85%; animation-delay: 4s; animation-duration: 9s;">❤</div>
+        <div class="heart-drop" style="left: 95%; animation-delay: 1.5s; animation-duration: 5s;">❤</div>
+    </div>
+
     <div id="screen-lock" class="screen active">
-        <div class="matrix-bg" id="matrix"></div>
         <div class="card lock-card">
             <div class="lock-icon">🔒</div>
             <h2>Esto se desbloquea con tu nombre ❤</h2>
             <div class="input-group">
-                <input type="text" id="partner-name" placeholder="Escribe tu nombre aquí..." autocomplete="off">
+                <input type="password" id="partner-name" placeholder="Escribe tu nombre aquí..." autocomplete="off">
                 <p id="lock-error" class="error-msg">Ese no es el amor de mi vida... Inténtalo de nuevo u.u</p>
             </div>
             <button onclick="checkName()" class="btn">Entrar</button>
@@ -24,17 +33,12 @@
 
     <div id="screen-roulette" class="screen">
         <div class="card dynamic-card">
-            <h2>Feliz primer mes 👩‍❤️‍👨 y haremos...</h2>
+            <h2>Feliz 1 mes 👩‍❤️‍👨 y haremos...</h2>
             
             <div class="roulette-container">
                 <div class="roulette-window">
                     <div class="roulette-slot" id="slot-machine">
-                        <div class="slot-item">🎨 Pintura</div>
-                        <div class="slot-item">🍿 Cine</div>
-                        <div class="slot-item">🍔 Cena</div>
-                        <div class="slot-item">✈ Viajar</div>
-                        <div class="slot-item">🏖️ playa</div>
-                    </div>
+                        </div>
                 </div>
             </div>
 
